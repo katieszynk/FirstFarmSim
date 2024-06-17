@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqs38ypjvm0eg"]
+
+[ext_resource type="Texture2D" uid="uid://3c6j2kpt61ke" path="res://art/Sprout Lands - Sprites - premium pack/Animals/Cow_Baby/baby purple cow animations sprites.png" id="1_o8ra1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_msclq"]
+size = Vector2(19, 13)
+
+[node name="BabyCow" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_o8ra1")
+hframes = 8
+vframes = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, 6.5)
+shape = SubResource("RectangleShape2D_msclq")

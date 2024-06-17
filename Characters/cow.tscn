@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7uav2l4mxmai"]
+
+[ext_resource type="Texture2D" uid="uid://b3b7qd4mpx2yr" path="res://art/Sprout Lands - Sprites - premium pack/Animals/Cow/Pink cow animation sprites.png" id="1_3l866"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_17ftc"]
+size = Vector2(27, 18)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3l866")
+hframes = 8
+vframes = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 5)
+shape = SubResource("RectangleShape2D_17ftc")
