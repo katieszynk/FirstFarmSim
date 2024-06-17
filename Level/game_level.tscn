@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://civx7yducf22k"]
+[gd_scene load_steps=22 format=3 uid="uid://civx7yducf22k"]
 
 [ext_resource type="PackedScene" uid="uid://cu2ax8muljx1c" path="res://Characters/player_cat.tscn" id="1_3o3dt"]
 [ext_resource type="Texture2D" uid="uid://oex0wofpd8au" path="res://art/Sprout Lands - Sprites - premium pack/Tilesets/ground tiles/New tiles/Darker_Grass_Tiles_v2.png" id="2_ossmq"]
@@ -10,7 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://bsmiqu8dxxkte" path="res://art/Sprout Lands - Sprites - premium pack/Tilesets/Building parts/Fences.png" id="8_a5jk4"]
 [ext_resource type="Texture2D" uid="uid://drsk3blkbnrxl" path="res://art/Sprout Lands - Sprites - premium pack/Tilesets/ground tiles/New tiles/Darker_Grass_Hill_Tiles_Slopes_v2.png" id="9_bk32n"]
 [ext_resource type="PackedScene" uid="uid://c7uav2l4mxmai" path="res://Characters/cow.tscn" id="10_wb6ld"]
-[ext_resource type="PackedScene" uid="uid://cqs38ypjvm0eg" path="res://Characters/baby_cow.tscn" id="11_xoxge"]
+[ext_resource type="PackedScene" uid="uid://8ddr664qvwok" path="res://Characters/baby_cow.tscn" id="11_xoxge"]
+[ext_resource type="Texture2D" uid="uid://ccfufkq2k2ohp" path="res://art/Sprout Lands - Sprites - premium pack/Objects/Piknik blanket.png" id="12_wuecy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aqcea"]
 texture = ExtResource("2_ossmq")
@@ -877,6 +878,7 @@ sources/6 = SubResource("TileSetAtlasSource_du7q0")
 sources/7 = SubResource("TileSetAtlasSource_8mewg")
 
 [node name="GameLevel" type="Node2D"]
+y_sort_enabled = true
 
 [node name="PlayerCat" parent="." instance=ExtResource("1_3o3dt")]
 position = Vector2(300, 212)
@@ -903,5 +905,10 @@ position = Vector2(300, 212)
 [node name="Cow" parent="." instance=ExtResource("10_wb6ld")]
 position = Vector2(408, 331)
 
+[node name="PiknikBlanket" type="Sprite2D" parent="."]
+z_index = -3
+position = Vector2(458, 174)
+texture = ExtResource("12_wuecy")
+
 [node name="BabyCow" parent="." instance=ExtResource("11_xoxge")]
-position = Vector2(361, 332)
+position = Vector2(471, 331)
