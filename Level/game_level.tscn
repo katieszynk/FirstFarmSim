@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://civx7yducf22k"]
+[gd_scene load_steps=24 format=3 uid="uid://civx7yducf22k"]
 
 [ext_resource type="PackedScene" uid="uid://cu2ax8muljx1c" path="res://Characters/player_cat.tscn" id="1_3o3dt"]
 [ext_resource type="Texture2D" uid="uid://oex0wofpd8au" path="res://art/Sprout Lands - Sprites - premium pack/Tilesets/ground tiles/New tiles/Darker_Grass_Tiles_v2.png" id="2_ossmq"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://8ddr664qvwok" path="res://Characters/baby_cow.tscn" id="11_xoxge"]
 [ext_resource type="Texture2D" uid="uid://ccfufkq2k2ohp" path="res://art/Sprout Lands - Sprites - premium pack/Objects/Piknik blanket.png" id="12_wuecy"]
 [ext_resource type="PackedScene" uid="uid://ds0nrrrk5uw8p" path="res://Objects/PiknikBasket.tscn" id="13_cx10e"]
+[ext_resource type="PackedScene" uid="uid://bhq1t42pi3e1r" path="res://Characters/chicken.tscn" id="14_blfte"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aqcea"]
 texture = ExtResource("2_ossmq")
@@ -920,3 +921,6 @@ position = Vector2(174, 371)
 
 [node name="StaticBody2D" parent="." instance=ExtResource("13_cx10e")]
 position = Vector2(457, 171)
+
+[node name="Chicken" parent="." instance=ExtResource("14_blfte")]
+position = Vector2(96, 337)
