@@ -1,0 +1,111 @@
+[gd_scene load_steps=14 format=3 uid="uid://bhq1t42pi3e1r"]
+
+[ext_resource type="Texture2D" uid="uid://cw8xo77qmd6on" path="res://art/Sprout Lands - Sprites - premium pack/Animals/Chicken/chicken red.png" id="1_fbjpo"]
+[ext_resource type="Script" path="res://Characters/chicken.gd" id="1_ioonh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rg86y"]
+size = Vector2(11, 9)
+
+[sub_resource type="Animation" id="Animation_c81v0"]
+resource_name = "idle"
+length = 1.2
+loop_mode = 1
+step = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 2]
+}
+
+[sub_resource type="Animation" id="Animation_ayu7k"]
+resource_name = "walk"
+length = 0.9
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.197291, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 17, 18, 19, 20, 21, 22, 23, 24]
+}
+
+[sub_resource type="Animation" id="Animation_kqgm5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8rnsu"]
+_data = {
+"RESET": SubResource("Animation_kqgm5"),
+"idle": SubResource("Animation_c81v0"),
+"walk": SubResource("Animation_ayu7k")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p40of"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lyhq5"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_res4r"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_elni1"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wot1u"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ycr6o"]
+states/idle/node = SubResource("AnimationNodeAnimation_p40of")
+states/idle/position = Vector2(666, 151)
+states/walk/node = SubResource("AnimationNodeAnimation_lyhq5")
+states/walk/position = Vector2(817, 42)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_res4r"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_elni1"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_wot1u")]
+
+[node name="Chicken" type="CharacterBody2D"]
+script = ExtResource("1_ioonh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_fbjpo")
+hframes = 8
+vframes = 27
+frame = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 1.5)
+shape = SubResource("RectangleShape2D_rg86y")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8rnsu")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_ycr6o")
+advance_expression_base_node = NodePath("../AnimationPlayer")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
